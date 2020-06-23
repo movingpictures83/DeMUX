@@ -1,0 +1,4 @@
+sequences	plugins/DeMUX/example/fastqjoin.join.fastq
+mapping	plugins/DeMUX/example/Mapping_file_corrected.txt
+barcodes	plugins/DeMUX/example/fastqjoin.join_barcodes.fastq 
+barcodetype	12

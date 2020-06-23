@@ -1,0 +1,2 @@
+Prefix plugins/DeMUX/example
+Plugin DeMUX inputfile parameters.txt outputfile output
