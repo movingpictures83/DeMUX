@@ -22,10 +22,15 @@ void DeMUXPlugin::output(std::string file) {
    std::string command = "export OLDPATH=${PYTHONPATH}; export PYTHONPATH=${PYTHON2_DIST_PACKAGES}:${PYTHON2_SITE_PACKAGES}:${PYTHONPATH}; split_libraries_fastq.py";
  command += " -i "+parameters["sequences"];
  command += " -m "+parameters["mapping"];
+ if (parameters.count("barcodes") != 0) {
  command += " -b "+parameters["barcodes"];
+ }
  if (parameters.count("barcodetype") != 0) {
     command += " --barcode_type "+parameters["barcodetype"];
  }
+ //else {
+ //   command += " --barcode_type not-barcoded";
+ //}
  command += " -o "+file+"; cp "+file+"/*.txt "+file+"/..; cp "+file+"/*.fna "+file+"/..; export PYTHONPATH=OLDPATH"; 
  std::cout << command << std::endl;
 
