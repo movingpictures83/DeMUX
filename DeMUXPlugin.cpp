@@ -19,7 +19,8 @@ void DeMUXPlugin::run() {
 }
 
 void DeMUXPlugin::output(std::string file) {
-   std::string command = "export OLDPATH=${PYTHONPATH}; export PYTHONPATH=${PYTHON2_DIST_PACKAGES}:${PYTHON2_SITE_PACKAGES}:${PYTHONPATH}; split_libraries_fastq.py";
+   //std::string command = "export OLDPATH=${PYTHONPATH}; export PYTHONPATH=${PYTHON2_DIST_PACKAGES}:${PYTHON2_SITE_PACKAGES}:${PYTHONPATH}; split_libraries_fastq.py";
+   std::string command = "split_libraries_fastq.py";
  command += " -i "+parameters["sequences"];
  command += " -m "+parameters["mapping"];
  if (parameters.count("barcodes") != 0) {
@@ -31,7 +32,8 @@ void DeMUXPlugin::output(std::string file) {
  //else {
  //   command += " --barcode_type not-barcoded";
  //}
- command += " -o "+file+"; cp "+file+"/*.txt "+file+"/..; cp "+file+"/*.fna "+file+"/..; export PYTHONPATH=OLDPATH"; 
+ command += " -o "+file+"; cp "+file+"/*.txt "+file+"/..; cp "+file+"/*.fna "+file+"/..";
+ //; export PYTHONPATH=OLDPATH"; 
  std::cout << command << std::endl;
 
  system(command.c_str());
